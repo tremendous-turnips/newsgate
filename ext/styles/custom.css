@@ -1,0 +1,62 @@
+/*
+  ========================================
+  Nav
+  ========================================
+*/
+
+nav {
+  color: #1995AD;
+  background-color: #F1F1F2;
+  /*padding-left: 79px;*/
+}
+
+.logo-img {
+  float: left;
+  margin-top: 7px;
+}
+
+.container nav {
+  float: left;
+}
+
+#general {
+  margin-left: 10px;
+}
+
+/*
+  ========================================
+  Disable Options
+  ========================================
+*/
+
+tr {
+  /*border-bottom: 1px solid #BCBABE;*/
+}
+
+tr:last-child {
+  border-bottom: none;
+}
+
+td {
+  padding-top: 10px;
+  padding-bottom: 10px; 
+}
+
+td.label {
+  width: 255px;
+  padding-left: 25px 
+}
+
+.status {
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 2px solid #A1D6E2;
+  border-radius: 20px;
+  width: 400px;
+  text-align: center;
+}
+
+.status p {
+  margin-bottom: 0px;
+}
