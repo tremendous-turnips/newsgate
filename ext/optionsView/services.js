@@ -13,7 +13,7 @@ services.factory('Themes', function() {
 services.factory('General', function() {
   
   // Disable for x minutes
-  var disable = function(min) {
+  var disable = function(min, callback) {
 
     // If chose enabled, then change icon to enabled, set state to enabled and clear all if any alarms
     if (min === 0) {
@@ -21,7 +21,6 @@ services.factory('General', function() {
         () => {
           chrome.extension.getBackgroundPage().setDisabledState(false, () => {
           chrome.extension.getBackgroundPage().chrome.alarms.clearAll();
-          console.log('Newsgate enabled');
         });      
       });
     } else {
