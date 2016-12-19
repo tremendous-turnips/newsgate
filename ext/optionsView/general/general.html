@@ -2,15 +2,9 @@
   <h1>General Settings</h1>
 </div>
 <div class="general-div">
-  <h3> Disable: </h3>
-  <div> Options </div>
+  <h5>Disable Options</h5>
   <form name='disabler' class='radio'>
     <table>
-
-      <tr>
-        <td>Enable: </td>
-        <td class='secTd'><input name="time" ng-model="minutes" type='radio' ng-value=0></input></td>
-      </tr>
 
       <!-- <tr>
         <td>Disable for 3 Seconds: </td>
@@ -21,31 +15,36 @@
         <td>Disable for 6 Seconds: </td>
         <td class='secTd'><input name="time" ng-model="minutes" type='radio' ng-value=0.1></input></td>
       </tr> -->
-
+      
       <tr>
-        <td>Disable for 10 Minutes: </td>
-        <td class='secTd'><input name="time" ng-model="minutes" type='radio' ng-value=10></input></td>
+        <td class='label'>10 Minutes</td>
+        <td class='secTd'><input class='input-radio' name="time" ng-model="minutes" type='radio' ng-value=10></input></td>
       </tr>
       
       <tr>
-        <td>Disable for 30 Minutes: </td>
+        <td class='label'>30 Minutes</td>
         <td class='secTd'><input name="time" ng-model="minutes" type='radio' ng-value=30></input></td>
       </tr>
       
       <tr>
-        <td>Disable for 1 Hour    : </td>
+        <td class='label'>1 Hour</td>
         <td class='secTd'><input name="time" ng-model="minutes" type='radio' ng-value=60></input></td>
       </tr>
       
       <tr>
-        <td>Disable     : </td>
+        <td class='label'>Disable</td>
         <td class='secTd'><input name="time" ng-model="minutes" type='radio' ng-value=1000000></input></td>
+      </tr>
+
+      <tr>
+        <td class='label'>Enable </td>
+        <td class='secTd'><input name="time" ng-model="minutes" type='radio' ng-value=0></input></td>
       </tr>
 
     </table>
   </form>
   
-  <div ng-model="remainingTimeLeft" >
+  <div class="status" ng-model="remainingTimeLeft" >
     <p>{{remainingTimeLeft.data}}</p>
   </div>
 

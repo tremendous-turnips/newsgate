@@ -14,7 +14,7 @@
 body {
   background-color: #fff;
   min-width: 220px;
-  min-height: 250px;
+  min-height: 220px;
   font-size: 12px;
 }
 
@@ -26,12 +26,13 @@ body {
   height: 100%;
 }
 .menuItem {
-  border-top: 1pt solid #BCBABE;
-  border-bottom: 1pt solid #BCBABE;
+  /*border-top: 1pt solid #BCBABE;*/
+  /*border-bottom: 1pt solid #BCBABE;*/
   /*margin-left: 24%;*/
+  font-weight: 500;
   padding-left: 24%;
-  padding-top: 7%;
-  padding-bottom: 7%;
+  padding-top: 3%;
+  padding-bottom: 3%;
   overflow: visible;
 }
 .menuTitle {
@@ -39,6 +40,7 @@ body {
   padding-top: 7%;
   padding-bottom: 7%;
   font-size: 20px;
+  color: #1995AD;
 }
 /*
 #F1F1F2 white
@@ -47,9 +49,13 @@ body {
 */
 .menuItemOptions {
   text-align: center;
-  padding-top: 7%;
-  padding-bottom: 7%;
-  font-size: 15px;
+  margin-top: 1%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #BCBABE;
+  border-radius: 5px;
 }
 .menuItemFirst {
   border-top: none;
@@ -68,7 +74,19 @@ body {
 }
 .otherDiv {
   margin-right: 20%;
-  height: 20%;
+  height: 10%;
   width: 100%;
-  background-color: #BCBABE;
+  background-color: #fff;
+}
+
+.stats {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.logo-img {
+  float: left;
+  margin-left: 20px;
+  margin-right: -45px;
+  margin-top: 10px;
 }

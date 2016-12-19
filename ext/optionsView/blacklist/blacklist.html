@@ -4,22 +4,21 @@
 
 <div class="blacklist-div">
   <div>
-    <span>Custom Blacklist</span>
+    <h5 class='form-control-label'>Custom Blacklist</h3>
     <!-- <span class="alert alert-success" role="alert">Successfully saved custom blacklist!</span> -->
   </div>
-  <p>URLs that will be added to the blacklist</p>
+  <p class='description'>URLs that will be added to the blacklist</p>
   <div class="userBlacklistField">
-    <textarea class="form-control" rows="3" ng-model="userBlacklistURLs" placeholder="https://www.fakenews.com">{{userBlacklistURLs}}</textarea>
+    <textarea class="form-control" rows="4" ng-model="userBlacklistURLs" placeholder="https://www.fakenews.com">{{userBlacklistURLs}}</textarea>
   </div>
   <br />
   <div>
-    <span>Custom Whitelist</span>
+    <h5 class='form-control-label'>Custom Whitelist</h3>
     <!-- <span class="alert alert-success" role="alert">Successfully saved custom whitelist!</span> -->
   </div>
-  <p>URLs that will NOT show up as a fake site</p>
+  <p class='description'>URLs that will NOT show up as a fake site</p>
   <div class="whitelistField">
-    <textarea class="form-control" rows="3" ng-model="whiteListedURLs" placeholder="https://www.realnews.com">{{whiteListedURLs}}</textarea>
+    <textarea class="form-control" rows="4" ng-model="whiteListedURLs" placeholder="https://www.realnews.com">{{whiteListedURLs}}</textarea>
   </div>
-  <br />
-  <button class="btn btn-danger" ng-click="saveSettings()">Update Settings</button>
+  <button class="btn update" ng-click="saveSettings()">Update Settings</button>
 </div>
