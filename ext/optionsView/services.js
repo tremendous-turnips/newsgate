@@ -22,7 +22,6 @@ services.factory('General', function() {
           chrome.extension.getBackgroundPage().setDisabledState(false, () => {
           chrome.extension.getBackgroundPage().chrome.alarms.clear('disableAlarm', () => {
             if (cb) {
-              console.log(cb, 'calling callback here')
               cb();
             }
           });

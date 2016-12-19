@@ -13,24 +13,38 @@ general.controller('generalController', function($scope, General) {
   })
 
   var getTimeLeft = function() {
-    console.log('getTImeleft called');
-    chrome.extension.getBackgroundPage().chrome.alarms.getAll(function(alarms) {
-      if (alarms.length > 0) {
-        var d = new Date();
-        var ms = d.getTime();
-        
-        var timeLeft = (alarms[0].scheduledTime - ms) / 60000; 
-        console.log(timeLeft, 'TIMELEFT');
-        if (timeLeft > 60) {
-          $scope.remainingTimeLeft.data = 'Disabled indefinitely'
+    chrome.extension.getBackgroundPage().getDisabledState(function(isDisabled) {
+      chrome.extension.getBackgroundPage().chrome.alarms.getAll(function(alarms) {
+
+        // Get the disableAlarm
+        var disableAlarm = null;
+        alarms.forEach(function(alarm) {
+          if (alarm.name === 'disableAlarm') {
+            disableAlarm = alarm;
+          }
+        })
+
+        // Check if currently disabled or exists a disabledAlarm
+        if (disableAlarm || isDisabled) {
+          var d = new Date();
+          var ms = d.getTime();
+          
+          // Set timeLeft to arbitrarily large time if we know in disabled state but no alarm has been set
+          var timeLeft = disableAlarm ? (disableAlarm.scheduledTime - ms) / 60000 : 1000000; 
+          
+          // Display to user 'Disabled indefinitely' if either selected through settings or through popup
+          if (timeLeft > 60) {
+            $scope.remainingTimeLeft.data = 'Disabled indefinitely';
+          } else {
+            // Display to user remaining disabled time if there exists an alarm of less then 60 minutes
+            timeLeft = parseFloat(Math.round(timeLeft * 100) / 100).toFixed(0); 
+            $scope.remainingTimeLeft.data = `Fake news on the prowl for ${timeLeft} more minutes`;;
+          }
         } else {
-          timeLeft = parseFloat(Math.round(timeLeft * 100) / 100).toFixed(0); 
-          $scope.remainingTimeLeft.data = `Fake news on the prowl for ${timeLeft} more minutes`;;
+          $scope.remainingTimeLeft.data = 'Currently enabled';
         }
-      } else {
-        $scope.remainingTimeLeft.data = 'Currently enabled';
-      }
-    }); 
+      }); 
+    });  
   }
 
   getTimeLeft();
