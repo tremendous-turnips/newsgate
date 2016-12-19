@@ -150,6 +150,7 @@ function filterLinks (unfilteredLink) {
   // compares all links on page with what model returns
 function renderDOM(response, DOMLinks) {
   // console.log(response.data.length, "HAS LENGTH OF ?");
+  console.log(response.data);
   fakeDomains = Object.keys(response.data['blacklist']).length;
   DOMLinks.each(function(index, element) {
     var href = $(element).attr('href');
@@ -161,6 +162,7 @@ function renderDOM(response, DOMLinks) {
     if (response.data['blacklist'][domain]) {
       var bias = getHrefClassBasedOn(response.data.blacklist[domain]);
       chrome.storage.sync.get('theme', function(syncStore) {
+        console.log('ADDING', syncStore.theme[bias]);
         $(element).addClass(syncStore.theme[bias]); // Inject css theme class
       });
     }
@@ -213,6 +215,7 @@ function getHrefClassBasedOn(type) {
     case 'clickbait':
     case 'fake, conspiracy':
     case 'bias, fake':
+    case 'userAdded':
       return 'fake';
 
     ////////////////////////////////////////////////////////////////////////////

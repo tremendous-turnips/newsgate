@@ -1,23 +1,25 @@
-// DEFAULT THEME ///////////////////////////////////////////////////////////////
+/*// DEFAULT THEME ///////////////////////////////////////////////////////////////*/
+
 .defaultTheme-fake {
   background-color: #DC143C !important;
 }
-
 .defaultTheme-satire {
   background-color: #FFA500 !important;
 }
 
 .defaultTheme-biased {
-  background-color: #FFFF00 !important;
+/*  background-color: #FFFF00 !important;
+*/
+  background-color: #DC143C !important;
 }
 
-// CENSOR THEME ////////////////////////////////////////////////////////////////
+/*// CENSOR THEME ////////////////////////////////////////////////////////////////*/
 .censorTheme-fake {
   background-color: #000000 !important;
   color: #000000 !important;
 }
-
 .censorTheme-satire {
+
   background-color: #000000 !important;
   color: #000000 !important;
 }
