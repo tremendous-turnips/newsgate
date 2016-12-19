@@ -60,7 +60,7 @@ function refreshRender() {
       chrome.tabs.sendMessage(tabs[0].id, {refresh: "refresh"}, function(response) {
       });
     });
-  }, 500);
+  }, 1000);
 };
 
 //HELPER FUNCTION TO FILTER GOOGLE SEARCH CHANGING HREFS (WHY!?!?)

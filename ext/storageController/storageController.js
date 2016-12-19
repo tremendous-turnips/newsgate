@@ -60,7 +60,7 @@ var initLocalStorage = function() {
   // Set the default theme -- this is also set in themes.js
   chrome.storage.sync.set({
     'theme': {
-      fake: 'defaultTheme-fake',
+      fake:   'defaultTheme-fake',
       satire: 'defaultTheme-satire',
       biased: 'defaultTheme-biased',
       themeName: 'default'
@@ -241,6 +241,8 @@ var setWhitelistTo = function(newWhitelistArray, callback) {
 // @input2: (optional) callback with no arguments to be executed after storage is set
 var setUserlistTo = function(newUserlistArray, callback) {
   chrome.storage.sync.set({ 'userGeneratedBlacklist' : newUserlistArray }, function() {
+    console.log('Successfully updated blackListedURLs in local storage to ', newUserlistArray);
+
     if (callback) {
       callback();
     }
