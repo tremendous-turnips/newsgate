@@ -11,8 +11,8 @@
         <td>Enable: </td>
         <td class='secTd'><input name="time" ng-model="minutes" type='radio' ng-value=0></input></td>
       </tr>
-<!-- 
-      <tr>
+
+      <!-- <tr>
         <td>Disable for 3 Seconds: </td>
         <td class='secTd'><input name="time" ng-model="minutes" type='radio' ng-value=0.05></input></td>
       </tr>
@@ -44,9 +44,11 @@
 
     </table>
   </form>
-  <div>
-    <p>{{remainingTimeLeft}}</p>
+  
+  <div ng-model="remainingTimeLeft" >
+    <p>{{remainingTimeLeft.data}}</p>
   </div>
+
   <pre>
   </pre>
 </div>
