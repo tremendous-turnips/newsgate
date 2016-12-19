@@ -8,25 +8,44 @@
 var server = 'https://newsgate.herokuapp.com/dateFilter'; // Deployed server db
 
 // Makes post request to server for new blacklisted URLs
-var makePostReq = function(dateObj) {
+var updateBlacklistRequest = function(dateObj) {
   var xhr = new XMLHttpRequest();
   xhr.open("POST", server, true);
 
   //Send header information about dateObj along with the request
-  xhr.setRequestHeader("Content-type", "application/json");
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
   xhr.onreadystatechange = function(data) { //Call a function when the state changes.
     if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-        // Request finished. Update the blacklist here.
-        var data = JSON.parse(xhr.responseText);
-        updateBlacklist(data, 'blackListedURLs', function() {
-          chrome.browserAction.setIcon({ path: "assets/turnip-white.png" });
-        });
+      // Request finished. Update the blacklist here.
+      var data = JSON.parse(xhr.responseText);
+      updateList(data, 'blackListedURLs', function() {
+        chrome.browserAction.setIcon({ path: "assets/turnip-white.png" });
+      });
     }
   };
-
   xhr.send(dateObj);
 };
+
+////////////////////////////////////////////////////////////////////////////////
+// UPDATE BLACKLIST IN USER'S LOCAL STORAGE
+////////////////////////////////////////////////////////////////////////////////
+var updateBlacklist = function() {
+  chrome.storage.local.get('blackListedURLs', function(response) {
+    if (response.blackListedURLs.length === 0) {
+      // send a post request for an arbitrary date before the extension was made
+      var arbitraryDate = JSON.stringify({ date: "2012-12-21T00:57:22.959Z" });
+      updateBlacklistRequest(arbitraryDate);
+    } else {
+      // Gets last URL that was pulled from server
+      // get last url in currentURLs
+      var lastURLobj = response.blackListedURLs[response.blackListedURLs.length - 1];
+      var lastURLdate = lastURLobj.createdAt;
+      updateBlacklistRequest({ date: lastURLdate });
+    }
+  });
+};
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // CHROME LOCAL & SYNC STORAGE INITIALIZATION
@@ -49,7 +68,7 @@ var initLocalStorage = function() {
   });
   chrome.storage.sync.set({ 'disabled' : false });
   // Fill blackListedURLs with data from server
-  getLastUpdated();
+  updateBlacklist();
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -58,23 +77,23 @@ chrome.runtime.onInstalled.addListener(initLocalStorage); // Initializes local s
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-// UPDATE BLACK LIST - AKA BLACKLIST SETTER FUNCTION
-// @input1: An array of new URL objects to append to current black list
-// @input2: Name of blacklist to update
+// UPDATE LISTS - AKA LIST SETTER FUNCTION
+// @input1: An array of new URL objects to append to the specified list
+// @input2: Name of list to update
 //    OPTIONS: 'blackListedURLs', 'userGeneratedBlacklist', or 'whiteListedURLs'
 ////////////////////////////////////////////////////////////////////////////////
-var updateBlacklist = function(newURLs, blackListToUpdate, callback) {
-  if (blackListToUpdate === 'blackListedURLs') {
+var updateList = function(newURLs, listToUpdate, callback) {
+  if (listToUpdate === 'blackListedURLs') {
     getBlacklist(function(oldURLs) {
-      combineBlackList(newURLs, oldURLs, blackListToUpdate, callback);
+      combineList(newURLs, oldURLs, listToUpdate, callback);
     });
-  } else if (blackListToUpdate === 'userGeneratedBlacklist') {
+  } else if (listToUpdate === 'userGeneratedBlacklist') {
     getUserlist(function(oldURLs) {
-      combineBlackList(newURLs, oldURLs, blackListToUpdate, callback);
+      combineList(newURLs, oldURLs, listToUpdate, callback);
     });
-  } else if (blackListToUpdate === 'whiteListedURLs') {
+  } else if (listToUpdate === 'whiteListedURLs') {
     getWhitelist(function(oldURLs) {
-      combineBlackList(newURLs, oldURLs, blackListToUpdate, callback);
+      combineList(newURLs, oldURLs, listToUpdate, callback);
     });
   } else {
     console.error('COULD NOT FIND BLACK LIST TO UPDATE');
@@ -90,9 +109,9 @@ var updateBlacklist = function(newURLs, blackListToUpdate, callback) {
 // |__|  |__| |_______||_______|| _|      |_______|| _| `._____|_______/
 ////////////////////////////////////////////////////////////////////////////////
 
-// Helper function for updateBlackList
+// Helper function for updateList
 // Combines old and new blacklist and saves it to local storage on chrome
-var combineBlackList = function(newURLs, oldURLs, blackListToUpdate, callback) {
+var combineList = function(newURLs, oldURLs, blackListToUpdate, callback) {
   var newListURLs = oldURLs.concat(newURLs);
 
   if (blackListToUpdate === 'blackListedURLs') {
@@ -110,7 +129,7 @@ var combineBlackList = function(newURLs, oldURLs, blackListToUpdate, callback) {
 var addToWhitelist = function(url, cb) {
   getWhitelist(function(results) {
     results = _.uniq(results);
-    combineBlackList([url], results, 'whiteListedURLs');
+    combineList([url], results, 'whiteListedURLs');
     cb();
   });
 };
@@ -178,23 +197,6 @@ var getWhitelist = function(callback) {
   });
 };
 
-// Gets last URL that was pulled from server
-// and updates the list in local storage
-var getLastUpdated = function() {
-  chrome.storage.local.get('blackListedURLs', function(blackListedURLs) {
-    if (blackListedURLs['blackListedURLs'].length === 0) {
-      // send a post request for an arbitrary date before the extension was made
-      var arbitraryDate = JSON.stringify({ date: "2012-12-21T00:57:22.959Z" });
-      makePostReq(arbitraryDate);
-    } else {
-      // get last url in currentURLs
-      var lastURLobj = currentURLs[currentURLs.length - 1];
-      var lastURLdate = lastURLobj.createdAt;
-      makePostReq({ date: lastURLdate });
-    }
-  });
-};
-
 // Gets disabled setting re DOM rendering and banner
 var getDisabledState = function(callback) {
   chrome.storage.sync.get('disabled', function(result) {
@@ -249,6 +251,7 @@ var setUserlistTo = function(newUserlistArray, callback) {
 // @input1: An array that will be the new white list
 var setBlacklistTo = function(newBlacklistArray, callback) {
   chrome.storage.local.set({ 'blackListedURLs' : newBlacklistArray }, function() {
+    console.log('Successfully updated blackListedURLs in local storage');
     if (callback) {
       callback();
     }

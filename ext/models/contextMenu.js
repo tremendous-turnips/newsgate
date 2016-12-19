@@ -105,7 +105,7 @@ function contextMenuBlacklist(word) {
             refreshRender();
           });
         } else {
-          updateBlacklist([domain], 'userGeneratedBlacklist');
+          updateList([domain], 'userGeneratedBlacklist');
           refreshRender();
         }
       });

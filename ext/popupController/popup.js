@@ -39,9 +39,9 @@ $(document).ready(function() {
           }
         });
         if (unique) {
-          chrome.extension.getBackgroundPage().updateBlacklist([domain], 'userGeneratedBlacklist');
+          chrome.extension.getBackgroundPage().updateList([domain], 'userGeneratedBlacklist');
         }
-      })
+      });
     });
   });
 

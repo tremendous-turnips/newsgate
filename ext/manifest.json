@@ -25,7 +25,8 @@
       "storageController/storageController.js",
       "models/checkForFakes.js",
       "models/contextMenu.js",
-      "checkAddressBarUrl/checkUrlBackground.js"
+      "checkAddressBarUrl/checkUrlBackground.js",
+      "alarm/updateBlacklistAlarm.js"
     ]
   },
   "options_page": "options/options.html",
