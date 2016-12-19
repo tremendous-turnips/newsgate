@@ -1,5 +1,17 @@
 /*
   ========================================
+  General
+  ========================================
+*/
+
+h2, h3, h4, h5 {
+  /*color: #648880;*/
+  color: #c0b0ad;
+  font-weight: 400;
+}
+
+/*
+  ========================================
   Nav
   ========================================
 */
@@ -12,6 +24,8 @@ nav {
 
 .logo-img {
   float: left;
+  margin-left: 10px;
+  margin-right: 8px;
   margin-top: 7px;
 }
 
@@ -20,7 +34,16 @@ nav {
 }
 
 #general {
-  margin-left: 10px;
+}
+
+.navlinks {
+  /*color: #1995AD;*/
+}
+
+#general:hover,#blacklist:hover,#themes:hover {
+  /*color: #1995AD;*/
+  background-color: #A1D6E2;
+  text-decoration: none;
 }
 
 a:hover {
@@ -73,11 +96,11 @@ td.label {
 */
 textarea.form-control {
   border-radius: 20px;
-  border: 2px solid #A1D6E2;
+  border: 1.5px solid #A1D6E2;
 }
 
 h3.form-control-label {
-  font-weight: 600;
+  /*font-weight: 600;*/
 }
 
 button.update {
@@ -86,8 +109,36 @@ button.update {
   background-color: #1995AD; 
 }
 
+button.update:hover {
+  background-color: #A1D6E2; 
+}
+
 p.description {
   margin-bottom: 5px;
 }
 
+/*
+  ========================================
+  Themes
+  ========================================
+*/
 
+.radio-label {
+  float: left;
+}
+
+.radio-input {
+  float:left;
+  margin-right: 20px;
+  margin-left: -15px;
+}
+
+.preview {
+  border-radius: 20px;
+  border: 1.5px solid #A1D6E2;
+  width: 750px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}

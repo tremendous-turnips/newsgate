@@ -6,25 +6,33 @@
 <div class="radio themes-div">
 <form ng-controller="themesController">
   <label>
-    <input type="radio" ng-model="radioButton.selected" value="default" ng-click="setTheme(defaultTheme)">
-    Default
+    <div class='container'>
+      <input class="radio-input" type="radio" ng-model="radioButton.selected" value="default" ng-click="setTheme(defaultTheme)">
+      <h5 class='radio-label'>Default</h5>
+    </div>
     <div>
-      Preview: <br />
-      Real News site: <a href="">www.npr.org</a><br />
-      Fake News site: <a style="background-color:#DC143C" href="">www.breitbart.com</a><br />
-      Satire News site: <a style="background-color:#FFA500" href="">www.theonion.com</a><br />
-      Biased News site: <a style="background-color:#FFFF00" href="">www.whatdoesitmean.com</a><br />
+      <p class="description">News Sites Preview</p>
+      <div class="preview">
+        Real News site: <a href="">www.npr.org</a><br />
+        Fake News site: <a style="background-color:#DC143C" href="">www.breitbart.com</a><br />
+        Satire News site: <a style="background-color:#FFA500" href="">www.theonion.com</a><br />
+        Biased News site: <a style="background-color:#FFFF00" href="">www.whatdoesitmean.com</a><br />
+      </div>
     </div>
   </label><br />
   <label>
-    <input type="radio" ng-model="radioButton.selected" value="censorTheme" ng-click="setTheme(censorTheme)">
-    Old School Censor
+    <div class='container'>
+      <input class="radio-input" type="radio" ng-model="radioButton.selected" value="censorTheme" ng-click="setTheme(censorTheme)">
+      <h5 class='radio-label'>Old School Censor</h5>
+    </div>
     <div>
-      Preview: <br />
-      Real News site: <a href="">www.npr.org</a><br />
-      Fake News site: <a style="background-color:#000000;color:#000000" href="">www.breitbart.com</a><br />
-      Satire News site: <a style="background-color:#000000;color:#000000" href="">www.theonion.com</a><br />
-      Biased News site: <a style="background-color:#000000;color:#000000" href="">www.whatdoesitmean.com</a><br />
+      <p class="description">News Sites Preview</p>
+      <div class="preview">
+        Real News site: <a href="">www.npr.org</a><br />
+        Fake News site: <a style="background-color:#000000;color:#000000" href="">www.breitbart.com</a><br />
+        Satire News site: <a style="background-color:#000000;color:#000000" href="">www.theonion.com</a><br />
+        Biased News site: <a style="background-color:#000000;color:#000000" href="">www.whatdoesitmean.com</a><br />
+      </div>
     </div>
   </label><br />
 </form>
