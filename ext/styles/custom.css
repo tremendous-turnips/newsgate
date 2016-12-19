@@ -23,6 +23,10 @@ nav {
   margin-left: 10px;
 }
 
+a:hover {
+  background-color: #A1D6E2
+}
+
 /*
   ========================================
   Disable Options
@@ -55,8 +59,35 @@ td.label {
   border-radius: 20px;
   width: 400px;
   text-align: center;
+  font-weight: 600;
 }
 
 .status p {
   margin-bottom: 0px;
 }
+
+/*
+  ========================================
+  Blacklist Settings
+  ========================================
+*/
+textarea.form-control {
+  border-radius: 20px;
+  border: 2px solid #A1D6E2;
+}
+
+h3.form-control-label {
+  font-weight: 600;
+}
+
+button.update {
+  margin-top: 20px;
+  color: #fff;
+  background-color: #1995AD; 
+}
+
+p.description {
+  margin-bottom: 5px;
+}
+
+
