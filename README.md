@@ -3,6 +3,9 @@ Sniffing the news
 
 ## We created a chrome extension that gives people the power to know whether the information they're consuming is real or fake. Users can further customize their tastes with Newsgate and will be able to distinguish a favorable link from a 'blacklisted' one without ever even having to lift a finger, or in this case, clicking on a link.
 
+![Newsgate in Action](./newsgate.png "Newsgate in action on r/theonion")
+![Theme Options](/newsgate_themes.png "Theme Options")
+
 ## Project Vision
 Create a convenient and insightful way for people to make decisions about the validity of news stories. We set out hoping to create an algorithm that would determine the quality of news stories and allow our users to seamlessly discern between fact or fiction. 
 
