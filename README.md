@@ -53,10 +53,10 @@ This will drop the Mongo database.
 3) the extension should show up in your chrome toolbar
 
 ## Team (github handle)
-### Evan Chiang (MistrBrown) - Product Owner 
-### James Gu (james-gu) - Scrum Master 
-### Matt Walsh (wattmalsh) - Dev Team 
-### David Wayman (r3dcrosse) - Dev Team 
+- [Evan Chang](https://github.com/MistrBrown) (MistrBrown) - Product Owner 
+- [James Gu](https://github.com/james-gu) (james-gu) - Scrum Master 
+- [Matt Walsh](https://github.com/wattmalsh) (wattmalsh) - Dev Team 
+- [David Wayman](https://github.com/r3dcrosse) (r3dcrosse) - Dev Team 
 
-## Legacy Creators
-### David An, Emerson Hum, Forrest Murray, Aaron Trank 
+## Legacy Team
+David An, Emerson Hum, Forrest Murray, Aaron Trank 
