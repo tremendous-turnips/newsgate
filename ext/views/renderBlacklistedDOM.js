@@ -150,7 +150,7 @@ function filterLinks (unfilteredLink) {
   // compares all links on page with what model returns
 function renderDOM(response, DOMLinks) {
   // console.log(response.data.length, "HAS LENGTH OF ?");
-  console.log(response.data);
+  // console.log(response.data);
   fakeDomains = Object.keys(response.data['blacklist']).length;
   DOMLinks.each(function(index, element) {
     var href = $(element).attr('href');
@@ -162,7 +162,7 @@ function renderDOM(response, DOMLinks) {
     if (response.data['blacklist'][domain]) {
       var bias = getHrefClassBasedOn(response.data.blacklist[domain]);
       chrome.storage.sync.get('theme', function(syncStore) {
-        console.log('ADDING', syncStore.theme[bias]);
+        // console.log('ADDING', syncStore.theme[bias]);
         $(element).addClass(syncStore.theme[bias]); // Inject css theme class
       });
     }
@@ -258,9 +258,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       // console.log(response, 'THIS IS THE DISABLED RESPONSE in BOTTOM OF PAGE');
       // console.log(response.disabled, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
       if (!response.disabled) {
+
         renderBlacklist();
       } else {
-        console.log("DISABLED: DIDN'T RENDERBLACKLIST");
+        // console.log("DISABLED: DIDN'T RENDERBLACKLIST");
       }
     })
   }

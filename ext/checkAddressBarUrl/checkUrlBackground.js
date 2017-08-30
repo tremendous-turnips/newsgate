@@ -9,16 +9,14 @@
 // DISABLER /////////////////////////////////////////////////////////////////////////////
 // Tells content scripts to not kick off process if in disabled state
 /////////////////////////////////////////////////////////////////////////////////////////
-var allListeners = [];
 
 chrome.tabs.onUpdated.addListener(function(tabid, loadInfo) {
   getDisabledState(function(isDisabled) {
+    console.log(isDisabled);
     if (!isDisabled) {
-      addListener();
+      console.log('hi');
+      checkTab();
     }
-    //} else {
-    //   removeListener();
-    // }
   });
 })
 
@@ -32,7 +30,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 });
 
 
-function addListener () {
+function checkTab () {
+  console.log('WHY IS THIS BEING CALLED');
 // Listen for any changes to a tab
   chrome.tabs.onUpdated.addListener(function listener2(loadTabId, loadChangeInfo) {
     // If it is a 'loading' change.
