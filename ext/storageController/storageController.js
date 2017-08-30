@@ -206,7 +206,6 @@ var getDisabledState = function(callback) {
 
 var getDomainCountData = function(callback) {
   chrome.storage.sync.get('domainCount', function(result) {
-    console.log('Returning domainCount: ', result.domainCount)
     callback(result.domainCount);
   });
 };
